@@ -1,4 +1,4 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../src/model/response_you_tube.dart';
@@ -12,6 +12,14 @@ class SheachedVideoController extends GetxController with StateMixin {
   SheachedVideoController(this.interfaceProviderGetVideoYt);
 
   Future getVideoYT() async {
+    if (searchText.text.isEmpty) {
+      return Get.snackbar("Falha", "Campos de pesquisa  obrigátorio",
+          backgroundColor: Colors.white,
+          icon: const Icon(
+            Icons.error,
+            color: Colors.red,
+          ));
+    }
     checkVideo(false);
     try {
       model = await interfaceProviderGetVideoYt.searchVideoYt(searchText.text);

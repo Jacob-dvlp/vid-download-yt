@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 
 import '../../src/model/response_you_tube.dart';
 import '../sheached_video/sheached_video_controller.dart';
+import '../video_you_tube/video_you_tube_page.dart';
 
 class HomePage extends GetView<SheachedVideoController> {
   const HomePage({Key? key}) : super(key: key);
@@ -16,7 +17,7 @@ class HomePage extends GetView<SheachedVideoController> {
         return Scaffold(
           appBar: AppBar(
             backgroundColor: Colors.red,
-            title: const Text('Resultado conforme a pesquisa'),
+            title: const Text('Resultado da Pesquisa'),
             centerTitle: true,
           ),
           body: ListView.builder(
@@ -69,22 +70,27 @@ class HomePage extends GetView<SheachedVideoController> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Text(
-                                  item.snippet.title,
-                                  style: const TextStyle(
-                                    fontSize: 17,
+                                Flexible(
+                                  child: Text(
+                                    item.snippet.title,
+                                    style: const TextStyle(
+                                      fontSize: 17,
+                                    ),
                                   ),
                                 ),
                                 const SizedBox(
                                   height: 10,
                                 ),
-                                Text(
-                                  item.snippet.channelTitle,
-                                  style: const TextStyle(
-                                    fontSize: 12,
+                                Flexible(
+                                  child: Text(
+                                    item.snippet.channelTitle,
+                                    style: const TextStyle(
+                                      fontSize: 12,
+                                    ),
                                   ),
                                 ),
-                                const Text("Download disponível"),
+                                const Flexible(
+                                    child: Text("Download disponível")),
                                 const SizedBox(
                                   height: 10,
                                 ),
@@ -131,11 +137,24 @@ class HomePage extends GetView<SheachedVideoController> {
                             ),
                           ),
                         ),
-                        const Padding(
-                          padding: EdgeInsets.only(top: 10, right: 8),
-                          child: Icon(
-                            Icons.visibility_outlined,
-                            color: Colors.red,
+                        Padding(
+                          padding: const EdgeInsets.only(top: 10, right: 8),
+                          child: GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => VideoYouTubePage(
+                                      id: item.id.videoId,
+                                      descption: item.snippet.title,
+                                      channelName: item.snippet.channelTitle,
+                                    ),
+                                  ));
+                            },
+                            child: const Icon(
+                              Icons.play_circle_outline,
+                              color: Colors.red,
+                            ),
                           ),
                         ),
                       ],
