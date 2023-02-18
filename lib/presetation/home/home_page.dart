@@ -16,7 +16,7 @@ class HomePage extends GetView<SheachedVideoController> {
         return Scaffold(
           appBar: AppBar(
             backgroundColor: Colors.red,
-            title: const Text('Vidéos'),
+            title: const Text('Resultado conforme a pesquisa'),
             centerTitle: true,
           ),
           body: ListView.builder(
@@ -33,20 +33,29 @@ class HomePage extends GetView<SheachedVideoController> {
                   elevation: 40,
                   child: SizedBox(
                     width: MediaQuery.of(context).size.width,
-                    height: MediaQuery.of(context).size.height / 5,
+                    height: MediaQuery.of(context).size.height / 4.2,
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Padding(
-                          padding: const EdgeInsets.only(top: 20),
+                          padding: const EdgeInsets.only(top: 40, left: 8),
                           child: SizedBox(
                             child: CachedNetworkImage(
                               imageUrl:
                                   item.snippet.thumbnails.thumbnailsDefault.url,
                               placeholder: (context, url) => const Center(
-                                  child: CircularProgressIndicator()),
+                                  child: CircularProgressIndicator(
+                                backgroundColor: Colors.red,
+                                color: Colors.white,
+                              )),
                               errorWidget: (context, url, error) =>
-                                  const Icon(Icons.error),
+                                  const Padding(
+                                padding: EdgeInsets.only(top: 40, left: 8),
+                                child: Icon(
+                                  Icons.error,
+                                  color: Colors.red,
+                                ),
+                              ),
                             ),
                           ),
                         ),
@@ -74,9 +83,6 @@ class HomePage extends GetView<SheachedVideoController> {
                                   style: const TextStyle(
                                     fontSize: 12,
                                   ),
-                                ),
-                                const SizedBox(
-                                  height: 10,
                                 ),
                                 const Text("Download disponível"),
                                 const SizedBox(

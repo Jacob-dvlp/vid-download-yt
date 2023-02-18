@@ -12,6 +12,7 @@ class SheachedVideoPage extends GetView<SheachedVideoController> {
         appBar: AppBar(
           title: const Text('Buscador de Vídeos'),
           centerTitle: true,
+          backgroundColor: Colors.red,
         ),
         body: GetBuilder<SheachedVideoController>(
           init: SheachedVideoController(Get.find()),
@@ -40,12 +41,25 @@ class SheachedVideoPage extends GetView<SheachedVideoController> {
                     onChanged: (value) {},
                   ),
                 ),
+                const SizedBox(
+                  height: 15,
+                ),
                 controller.isLoading
-                    ? ElevatedButton(
-                        onPressed: () => controller.getVideoYT(),
-                        child: const Text("Buscar o Vídeo"))
+                    ? SizedBox(
+                        width: 350,
+                        height: 50,
+                        child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.red,
+                            ),
+                            onPressed: () => controller.getVideoYT(),
+                            child: const Text("Buscar o Vídeo")),
+                      )
                     : const Center(
-                        child: CircularProgressIndicator(),
+                        child: CircularProgressIndicator(
+                          backgroundColor: Colors.red,
+                          color: Colors.white,
+                        ),
                       )
               ],
             );
