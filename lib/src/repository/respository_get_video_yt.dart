@@ -1,15 +1,25 @@
-import 'dart:developer';
-
 import 'package:http/http.dart' as http;
 
-class RespostiroyGetVideoYt {
-  Uri url = Uri.parse(
-      "https://www.googleapis.com/youtube/v3/search?part=snippet,id&key=AIzaSyAuzBbCG5cFw0Fp-TSvztHZSmN3Kojnd4E&order=date&q=Chris brown");
-  Future searchVideoYt() async {
-    final response = await http.get(url);
+import '../../helper/constant/app_constant.dart';
+import '../model/response_you_tube.dart';
+import 'interface/interface_get_video_yt.dart';
 
+class RespostiroyGetVideoYt implements InterfaceGetVideoYt {
+  List<Item> modelList = [];
+  String url =
+      "${AppConstant.baseUrl}search?part=snippet,id&key=${AppConstant.key}&order=date&q=";
+
+  @override
+  Future<List<Item>> searchVideoYt(String value) async {
+    final response = await http.get(
+      Uri.parse("$url+$value&maxResults=30"),
+    );
+    final convert = response.body;
+    ResponseYouTube model = responseYouTubeFromJson(convert);
     if (response.statusCode == 200) {
-      log(response.body);
+      modelList = model.items;
+      print(modelList);
     }
+    return modelList;
   }
 }
