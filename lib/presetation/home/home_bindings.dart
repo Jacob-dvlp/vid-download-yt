@@ -13,6 +13,8 @@ class HomeBindings implements Bindings {
     Get.lazyPut<InterfaceProviderGetVideoYt>(
         () => ProviderGetVideoYt(Get.find()));
 
-    Get.lazyPut(() => HomeController(Get.find()));
+    Get.lazyPut(() => HomeController(
+          Get.find(),
+        ));
   }
 }

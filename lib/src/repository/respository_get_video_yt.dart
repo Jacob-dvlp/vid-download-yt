@@ -18,7 +18,6 @@ class RespostiroyGetVideoYt implements InterfaceGetVideoYt {
     ResponseYouTube model = responseYouTubeFromJson(convert);
     if (response.statusCode == 200) {
       modelList = model.items;
-      print(modelList);
     }
     return modelList;
   }

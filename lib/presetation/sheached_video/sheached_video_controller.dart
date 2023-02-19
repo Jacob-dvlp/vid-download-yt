@@ -2,14 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../src/model/response_you_tube.dart';
+import '../../src/providers/interface_provider_get_video_yt/interface_provider_download_yt.dart';
 import '../../src/providers/interface_provider_get_video_yt/interface_provider_get_video_yt.dart';
 
 class SheachedVideoController extends GetxController with StateMixin {
   final InterfaceProviderGetVideoYt interfaceProviderGetVideoYt;
+  final InterfaceProviderDownloadYt interfaceProviderDownloadYt;
+
   final TextEditingController searchText = TextEditingController();
   List<Item> model = [];
   bool isLoading = true;
-  SheachedVideoController(this.interfaceProviderGetVideoYt);
+  SheachedVideoController(
+      this.interfaceProviderGetVideoYt, this.interfaceProviderDownloadYt);
 
   Future getVideoYT() async {
     if (searchText.text.isEmpty) {
@@ -25,11 +29,13 @@ class SheachedVideoController extends GetxController with StateMixin {
       model = await interfaceProviderGetVideoYt.searchVideoYt(searchText.text);
       change(Get.toNamed("/home"), status: RxStatus.success());
     } catch (e) {
-      print(e);
-
       change([], status: RxStatus.error());
     }
     checkVideo(true);
+  }
+
+  Future downloadVideo(String url) async {
+    await interfaceProviderDownloadYt.downloadVideoYt(url: url);
   }
 
   checkVideo(bool value) {

@@ -12,7 +12,7 @@ class HomePage extends GetView<SheachedVideoController> {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<SheachedVideoController>(
-      init: SheachedVideoController(Get.find()),
+      init: SheachedVideoController(Get.find(), Get.find()),
       builder: (controller) {
         return Scaffold(
           appBar: AppBar(
@@ -99,12 +99,99 @@ class HomePage extends GetView<SheachedVideoController> {
                                     children: [
                                       Flexible(
                                         child: Row(
-                                          children: const [
-                                            Icon(
-                                              Icons.download,
-                                              color: Colors.red,
+                                          children: [
+                                            GestureDetector(
+                                              onTap: () {
+                                                controller.downloadVideo(
+                                                    item.id.videoId);
+                                                // showModalBottomSheet<void>(
+                                                //   context: context,
+                                                //   shape: RoundedRectangleBorder(
+                                                //     borderRadius:
+                                                //         BorderRadius.circular(
+                                                //             20),
+                                                //   ),
+                                                //   builder:
+                                                //       (BuildContext context) {
+                                                //     return SizedBox(
+                                                //       height: 2000,
+                                                //       child: Padding(
+                                                //         padding:
+                                                //             const EdgeInsets
+                                                //                 .all(8.0),
+                                                //         child: Column(
+                                                //           crossAxisAlignment:
+                                                //               CrossAxisAlignment
+                                                //                   .start,
+                                                //           children: <Widget>[
+                                                //             Text(
+                                                //               item.snippet
+                                                //                   .title,
+                                                //               style:
+                                                //                   const TextStyle(
+                                                //                 fontSize: 15,
+                                                //                 fontWeight:
+                                                //                     FontWeight
+                                                //                         .bold,
+                                                //               ),
+                                                //             ),
+                                                //             const SizedBox(
+                                                //               height: 10,
+                                                //             ),
+                                                //             SizedBox(
+                                                //               width: Get.width,
+                                                //               height: 250,
+                                                //               child:
+                                                //                   CachedNetworkImage(
+                                                //                 imageUrl: item
+                                                //                     .snippet
+                                                //                     .thumbnails
+                                                //                     .thumbnailsDefault
+                                                //                     .url,
+                                                //                 fit: BoxFit
+                                                //                     .contain,
+                                                //                 placeholder: (context,
+                                                //                         url) =>
+                                                //                     const Center(
+                                                //                         child:
+                                                //                             CircularProgressIndicator(
+                                                //                   backgroundColor:
+                                                //                       Colors
+                                                //                           .red,
+                                                //                   color: Colors
+                                                //                       .white,
+                                                //                 )),
+                                                //                 errorWidget: (context,
+                                                //                         url,
+                                                //                         error) =>
+                                                //                     const Padding(
+                                                //                   padding: EdgeInsets
+                                                //                       .only(
+                                                //                           top:
+                                                //                               40,
+                                                //                           left:
+                                                //                               8),
+                                                //                   child: Icon(
+                                                //                     Icons.error,
+                                                //                     color: Colors
+                                                //                         .red,
+                                                //                   ),
+                                                //                 ),
+                                                //               ),
+                                                //             ),
+                                                //           ],
+                                                //         ),
+                                                //       ),
+                                                //     );
+                                                //   },
+                                                // );
+                                              },
+                                              child: const Icon(
+                                                Icons.download,
+                                                color: Colors.red,
+                                              ),
                                             ),
-                                            Text("MP4"),
+                                            const Text("MP4"),
                                           ],
                                         ),
                                       ),
