@@ -34,12 +34,12 @@ class HomePage extends GetView<SheachedVideoController> {
                   elevation: 40,
                   child: SizedBox(
                     width: MediaQuery.of(context).size.width,
-                    height: MediaQuery.of(context).size.height / 4.2,
+                    height: MediaQuery.of(context).size.height / 6,
                     child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Padding(
-                          padding: const EdgeInsets.only(top: 40, left: 8),
+                          padding: const EdgeInsets.only(top: 05, left: 8),
                           child: SizedBox(
                             child: CachedNetworkImage(
                               imageUrl:
@@ -51,7 +51,7 @@ class HomePage extends GetView<SheachedVideoController> {
                               )),
                               errorWidget: (context, url, error) =>
                                   const Padding(
-                                padding: EdgeInsets.only(top: 40, left: 8),
+                                padding: EdgeInsets.only(top: 5, left: 8),
                                 child: Icon(
                                   Icons.error,
                                   color: Colors.red,
@@ -85,141 +85,18 @@ class HomePage extends GetView<SheachedVideoController> {
                                   child: Text(
                                     item.snippet.channelTitle,
                                     style: const TextStyle(
-                                      fontSize: 12,
+                                      fontSize: 15,
                                     ),
                                   ),
                                 ),
-                                const Flexible(
-                                    child: Text("Download disponível")),
+                                const SizedBox(
+                                  height: 5,
+                                ),
+                                const Text(
+                                    "Download disponível          (Mp4 & MP3)"),
                                 const SizedBox(
                                   height: 10,
                                 ),
-                                Expanded(
-                                  child: Row(
-                                    children: [
-                                      Flexible(
-                                        child: Row(
-                                          children: [
-                                            GestureDetector(
-                                              onTap: () {
-                                                controller.downloadVideo(
-                                                    item.id.videoId);
-                                                // showModalBottomSheet<void>(
-                                                //   context: context,
-                                                //   shape: RoundedRectangleBorder(
-                                                //     borderRadius:
-                                                //         BorderRadius.circular(
-                                                //             20),
-                                                //   ),
-                                                //   builder:
-                                                //       (BuildContext context) {
-                                                //     return SizedBox(
-                                                //       height: 2000,
-                                                //       child: Padding(
-                                                //         padding:
-                                                //             const EdgeInsets
-                                                //                 .all(8.0),
-                                                //         child: Column(
-                                                //           crossAxisAlignment:
-                                                //               CrossAxisAlignment
-                                                //                   .start,
-                                                //           children: <Widget>[
-                                                //             Text(
-                                                //               item.snippet
-                                                //                   .title,
-                                                //               style:
-                                                //                   const TextStyle(
-                                                //                 fontSize: 15,
-                                                //                 fontWeight:
-                                                //                     FontWeight
-                                                //                         .bold,
-                                                //               ),
-                                                //             ),
-                                                //             const SizedBox(
-                                                //               height: 10,
-                                                //             ),
-                                                //             SizedBox(
-                                                //               width: Get.width,
-                                                //               height: 250,
-                                                //               child:
-                                                //                   CachedNetworkImage(
-                                                //                 imageUrl: item
-                                                //                     .snippet
-                                                //                     .thumbnails
-                                                //                     .thumbnailsDefault
-                                                //                     .url,
-                                                //                 fit: BoxFit
-                                                //                     .contain,
-                                                //                 placeholder: (context,
-                                                //                         url) =>
-                                                //                     const Center(
-                                                //                         child:
-                                                //                             CircularProgressIndicator(
-                                                //                   backgroundColor:
-                                                //                       Colors
-                                                //                           .red,
-                                                //                   color: Colors
-                                                //                       .white,
-                                                //                 )),
-                                                //                 errorWidget: (context,
-                                                //                         url,
-                                                //                         error) =>
-                                                //                     const Padding(
-                                                //                   padding: EdgeInsets
-                                                //                       .only(
-                                                //                           top:
-                                                //                               40,
-                                                //                           left:
-                                                //                               8),
-                                                //                   child: Icon(
-                                                //                     Icons.error,
-                                                //                     color: Colors
-                                                //                         .red,
-                                                //                   ),
-                                                //                 ),
-                                                //               ),
-                                                //             ),
-                                                //           ],
-                                                //         ),
-                                                //       ),
-                                                //     );
-                                                //   },
-                                                // );
-                                              },
-                                              child: const Icon(
-                                                Icons.download,
-                                                color: Colors.red,
-                                              ),
-                                            ),
-                                            const Text("MP4"),
-                                          ],
-                                        ),
-                                      ),
-                                      const SizedBox(
-                                        width: 10,
-                                      ),
-                                      Row(
-                                        children: const [
-                                          Icon(
-                                            Icons.download,
-                                            color: Colors.red,
-                                          ),
-                                          Text("MP3"),
-                                          SizedBox(
-                                            width: 10,
-                                          ),
-                                          SizedBox(
-                                              width: 52,
-                                              child: LinearProgressIndicator(
-                                                color: Colors.red,
-                                                backgroundColor: Colors.white,
-                                                value: 5,
-                                              ))
-                                        ],
-                                      )
-                                    ],
-                                  ),
-                                )
                               ],
                             ),
                           ),
@@ -235,12 +112,17 @@ class HomePage extends GetView<SheachedVideoController> {
                                       id: item.id.videoId,
                                       descption: item.snippet.title,
                                       channelName: item.snippet.channelTitle,
+                                      thumbnails: item.snippet.thumbnails
+                                          .thumbnailsDefault.url,
                                     ),
                                   ));
                             },
-                            child: const Icon(
-                              Icons.play_circle_outline,
-                              color: Colors.red,
+                            child: const CircleAvatar(
+                              backgroundColor: Colors.red,
+                              child: Icon(
+                                Icons.play_circle_outline,
+                                color: Colors.white,
+                              ),
                             ),
                           ),
                         ),

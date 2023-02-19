@@ -13,12 +13,16 @@ import 'sheached_video_controller.dart';
 class SheachedVideoBindings implements Bindings {
   @override
   void dependencies() {
-    Get.lazyPut<InterfaceGetVideoYt>(() => RespostiroyGetVideoYt());
+    Get.lazyPut<InterfaceGetVideoYt>(() => RespostiroyGetVideoYt(),
+        fenix: true);
     Get.lazyPut<InterfaceProviderGetVideoYt>(
-        () => ProviderGetVideoYt(Get.find()));
-    Get.lazyPut<InterfaceDownloadYt>(() => RepositoryDownloadYt());
+        () => ProviderGetVideoYt(Get.find()),
+        fenix: true);
+    Get.lazyPut<InterfaceDownloadYt>(() => RepositoryDownloadYt(), fenix: true);
     Get.lazyPut<InterfaceProviderDownloadYt>(
-        () => ProviderDownloadYt(Get.find()));
-    Get.lazyPut(() => SheachedVideoController(Get.find(), Get.find()));
+        () => ProviderDownloadYt(Get.find()),
+        fenix: true);
+    Get.lazyPut(() => SheachedVideoController(Get.find(), Get.find()),
+        fenix: true);
   }
 }

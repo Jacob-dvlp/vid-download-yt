@@ -12,6 +12,7 @@ class SheachedVideoController extends GetxController with StateMixin {
   final TextEditingController searchText = TextEditingController();
   List<Item> model = [];
   bool isLoading = true;
+  bool isDownload = true;
   SheachedVideoController(
       this.interfaceProviderGetVideoYt, this.interfaceProviderDownloadYt);
 
@@ -35,11 +36,18 @@ class SheachedVideoController extends GetxController with StateMixin {
   }
 
   Future downloadVideo(String url) async {
+    checkDownload(false);
     await interfaceProviderDownloadYt.downloadVideoYt(url: url);
+    checkDownload(true);
   }
 
   checkVideo(bool value) {
     isLoading = value;
+    update();
+  }
+
+  checkDownload(bool value) {
+    isDownload = value;
     update();
   }
 
