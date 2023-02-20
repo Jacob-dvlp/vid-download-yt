@@ -36,9 +36,14 @@ class SheachedVideoController extends GetxController with StateMixin {
   }
 
   Future downloadVideo(String url) async {
-    checkDownload(false);
-    await interfaceProviderDownloadYt.downloadVideoYt(url: url);
-    checkDownload(true);
+    try {
+      checkDownload(false);
+      await interfaceProviderDownloadYt.downloadVideoYt1080p(url: url);
+      checkDownload(true);
+    } catch (e) {
+      debugPrint(e.toString());
+      checkDownload(true);
+    }
   }
 
   checkVideo(bool value) {

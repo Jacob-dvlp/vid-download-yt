@@ -7,9 +7,21 @@ class ProviderDownloadYt implements InterfaceProviderDownloadYt {
 
   ProviderDownloadYt(this.interfaceDownloadYt);
   @override
-  Future<ResponseDownloadYt> downloadVideoYt({String? url}) async {
-    final response = await interfaceDownloadYt.downloadVideoYt(url: url!);
+  Future<ResponseDownloadYt> downloadVideoYt1080p({String? url}) async {
+    final response = await interfaceDownloadYt.downloadVideoYt1080p(url: url!);
 
     return response;
+  }
+
+  @override
+  Future<ResponseDownloadYt> downloadVideoYt480p({String? url}) {
+    // TODO: implement downloadVideoYt480p
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<ResponseDownloadYt> downloadVideoYt720p({String? url}) {
+    // TODO: implement downloadVideoYt720p
+    throw UnimplementedError();
   }
 }
