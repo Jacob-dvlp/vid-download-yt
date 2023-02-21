@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
+import '../custom/custom_widget_list_download/custom_list_type_download.dart';
 import '../sheached_video/sheached_video_controller.dart';
 
 class VideoYouTubePage extends StatefulWidget {
@@ -78,10 +79,10 @@ class _VideoYouTubePageState extends State<VideoYouTubePage> {
                           ? IconButton(
                               color: Colors.white,
                               onPressed: () {
-                                // controller
-                                //     .downloadVideo(widget.id!)
-                                //     .whenComplete(
-                                //   () {
+                               controller
+                                  .downloadVideo(widget.id!)
+                                    .whenComplete(
+                                   () {
                                 showModalBottomSheet(
                                   context: context,
                                   shape: const RoundedRectangleBorder(
@@ -142,7 +143,7 @@ class _VideoYouTubePageState extends State<VideoYouTubePage> {
                                                       textAlign:
                                                           TextAlign.justify,
                                                       style: const TextStyle(
-                                                          fontSize: 15,
+                                                          fontSize: 14,
                                                           fontWeight:
                                                               FontWeight.bold,
                                                           textBaseline:
@@ -154,14 +155,14 @@ class _VideoYouTubePageState extends State<VideoYouTubePage> {
                                               ),
                                               const Divider(),
                                               const SizedBox(
-                                                height: 10,
+                                                height: 8,
                                               ),
                                               Row(
                                                 children: const [
                                                   Icon(
                                                     Icons.music_note_outlined,
                                                     color: Colors.red,
-                                                    size: 30,
+                                                    size: 20,
                                                   ),
                                                   SizedBox(
                                                     width: 10,
@@ -174,57 +175,17 @@ class _VideoYouTubePageState extends State<VideoYouTubePage> {
                                                   )
                                                 ],
                                               ),
-                                              Padding(
-                                                padding:
-                                                    const EdgeInsets.all(8.0),
-                                                child: Row(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .spaceBetween,
-                                                  children: [
-                                                    Row(
-                                                      children: const [
-                                                        CircleAvatar(
-                                                          maxRadius: 10,
-                                                          backgroundColor:
-                                                              Colors.red,
-                                                        ),
-                                                        SizedBox(
-                                                          width: 10,
-                                                        ),
-                                                        Text(
-                                                          "128k",
-                                                          style: TextStyle(
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .bold),
-                                                        )
-                                                      ],
-                                                    ),
-                                                    const Text(
-                                                      "MP3",
-                                                      style: TextStyle(
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                          color: Colors.grey),
-                                                    ),
-                                                    const Text(
-                                                      "45Mb",
-                                                      style: TextStyle(
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                          color: Colors.grey),
-                                                    )
-                                                  ],
-                                                ),
-                                              ),
+                                              const CustomListTypeDownload(
+                                                  type: "128k",
+                                                  typesize: "MP3",
+                                                  size: "45Mb"),
                                               const Divider(),
                                               Row(
                                                 children: const [
                                                   Icon(
-                                                    Icons.play_arrow,
+                                                    Icons.play_arrow_outlined,
                                                     color: Colors.red,
-                                                    size: 30,
+                                                    size: 20,
                                                   ),
                                                   SizedBox(
                                                     width: 10,
@@ -237,182 +198,30 @@ class _VideoYouTubePageState extends State<VideoYouTubePage> {
                                                   )
                                                 ],
                                               ),
-                                              Padding(
-                                                padding:
-                                                    const EdgeInsets.all(8.0),
-                                                child: Row(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .spaceBetween,
-                                                  children: [
-                                                    Row(
-                                                      children: const [
-                                                        CircleAvatar(
-                                                          maxRadius: 10,
-                                                          backgroundColor:
-                                                              Colors.red,
-                                                        ),
-                                                        SizedBox(
-                                                          width: 10,
-                                                        ),
-                                                        Text(
-                                                          "1080HD",
-                                                          style: TextStyle(
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .bold),
-                                                        )
-                                                      ],
-                                                    ),
-                                                    const Text(
-                                                      "Webm",
-                                                      style: TextStyle(
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                          color: Colors.grey),
-                                                    ),
-                                                    const Text(
-                                                      "200Mb",
-                                                      style: TextStyle(
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                          color: Colors.grey),
-                                                    )
-                                                  ],
-                                                ),
-                                              ),
-                                              Padding(
-                                                padding:
-                                                    const EdgeInsets.all(8.0),
-                                                child: Row(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .spaceBetween,
-                                                  children: [
-                                                    Row(
-                                                      children: const [
-                                                        CircleAvatar(
-                                                          maxRadius: 10,
-                                                          backgroundColor:
-                                                              Colors.red,
-                                                        ),
-                                                        SizedBox(
-                                                          width: 10,
-                                                        ),
-                                                        Text(
-                                                          "720P",
-                                                          style: TextStyle(
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .bold),
-                                                        )
-                                                      ],
-                                                    ),
-                                                    const Text(
-                                                      "Mp4",
-                                                      style: TextStyle(
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                          color: Colors.grey),
-                                                    ),
-                                                    const Text(
-                                                      "150Mb",
-                                                      style: TextStyle(
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                          color: Colors.grey),
-                                                    )
-                                                  ],
-                                                ),
-                                              ),
-                                              Padding(
-                                                padding:
-                                                    const EdgeInsets.all(8.0),
-                                                child: Row(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .spaceBetween,
-                                                  children: [
-                                                    Row(
-                                                      children: const [
-                                                        CircleAvatar(
-                                                          maxRadius: 10,
-                                                          backgroundColor:
-                                                              Colors.red,
-                                                        ),
-                                                        SizedBox(
-                                                          width: 10,
-                                                        ),
-                                                        Text(
-                                                          "420P",
-                                                          style: TextStyle(
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .bold),
-                                                        )
-                                                      ],
-                                                    ),
-                                                    const Text(
-                                                      "Mp4",
-                                                      style: TextStyle(
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                          color: Colors.grey),
-                                                    ),
-                                                    const Text(
-                                                      "60Mb",
-                                                      style: TextStyle(
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                          color: Colors.grey),
-                                                    )
-                                                  ],
-                                                ),
-                                              ),
-                                              Padding(
-                                                padding:
-                                                    const EdgeInsets.all(8.0),
-                                                child: Row(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .spaceBetween,
-                                                  children: [
-                                                    Row(
-                                                      children: const [
-                                                        CircleAvatar(
-                                                          maxRadius: 10,
-                                                          backgroundColor:
-                                                              Colors.red,
-                                                        ),
-                                                        SizedBox(
-                                                          width: 10,
-                                                        ),
-                                                        Text(
-                                                          "360P",
-                                                          style: TextStyle(
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .bold),
-                                                        )
-                                                      ],
-                                                    ),
-                                                    const Text(
-                                                      "Mp4",
-                                                      style: TextStyle(
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                          color: Colors.grey),
-                                                    ),
-                                                    const Text(
-                                                      "50Mb",
-                                                      style: TextStyle(
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                          color: Colors.grey),
-                                                    )
-                                                  ],
-                                                ),
-                                              ),
+                                              const CustomListTypeDownload(
+                                                  type: "1080HD",
+                                                  typesize: "Webm",
+                                                  size: "200Mb"),
+                                              const CustomListTypeDownload(
+                                                  type: "720P",
+                                                  typesize: "  Mp4",
+                                                  size: "150Mb"),
+                                              const CustomListTypeDownload(
+                                                  type: "420P",
+                                                  typesize: "Mp4",
+                                                  size: "60Mb"),
+                                              const CustomListTypeDownload(
+                                                  type: "360P",
+                                                  typesize: "Mp4",
+                                                  size: "50Mb"),
+                                              const CustomListTypeDownload(
+                                                  type: "260P",
+                                                  typesize: "Mp4",
+                                                  size: "30Mb"),
+                                              const CustomListTypeDownload(
+                                                  type: "144P",
+                                                  typesize: "Mp4",
+                                                  size: "10Mb"),
                                               const SizedBox(
                                                 height: 15,
                                               ),
@@ -420,7 +229,7 @@ class _VideoYouTubePageState extends State<VideoYouTubePage> {
                                                 width: MediaQuery.of(context)
                                                     .size
                                                     .width,
-                                                height: 45,
+                                                height: 40,
                                                 child: ElevatedButton(
                                                     style: ElevatedButton
                                                         .styleFrom(
@@ -443,8 +252,8 @@ class _VideoYouTubePageState extends State<VideoYouTubePage> {
                                   },
                                 );
                               },
-                              // );
-                              //},
+                               );
+                              },
                               icon: const Icon(Icons.download),
                             )
                           : const Padding(
@@ -471,9 +280,6 @@ class _VideoYouTubePageState extends State<VideoYouTubePage> {
               padding: const EdgeInsets.all(8.0),
               child: Column(
                 children: [
-                  const SizedBox(
-                    height: 50,
-                  ),
                   SizedBox(height: 400, child: player),
                   const SizedBox(
                     height: 30,

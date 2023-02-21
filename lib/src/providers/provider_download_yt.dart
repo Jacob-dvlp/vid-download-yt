@@ -14,14 +14,32 @@ class ProviderDownloadYt implements InterfaceProviderDownloadYt {
   }
 
   @override
-  Future<ResponseDownloadYt> downloadVideoYt480p({String? url}) {
-    // TODO: implement downloadVideoYt480p
-    throw UnimplementedError();
+  Future<ResponseDownloadYt> downloadVideoYt720p({String? url}) async {
+    final response = await interfaceDownloadYt.downloadVideoYt720p(url: url!);
+    return response;
   }
 
   @override
-  Future<ResponseDownloadYt> downloadVideoYt720p({String? url}) {
-    // TODO: implement downloadVideoYt720p
-    throw UnimplementedError();
+  Future<ResponseDownloadYt> downloadVideoYt480p({String? url}) async {
+    final response = await interfaceDownloadYt.downloadVideoYt480p(url: url!);
+    return response;
+  }
+
+  @override
+  Future<ResponseDownloadYt> downloadVideoYt360p({String? url}) async {
+    final response = await interfaceDownloadYt.downloadVideoYt360p(url: url!);
+    return response;
+  }
+
+  @override
+  Future<ResponseDownloadYt> downloadVideoYt240p({String? url}) async {
+    final response = await interfaceDownloadYt.downloadVideoYt240p(url: url!);
+    return response;
+  }
+
+  @override
+  Future<ResponseDownloadYt> downloadVideoYt144p({String? url}) async {
+    final response = await interfaceDownloadYt.downloadVideoYt144p(url: url!);
+    return response;
   }
 }
