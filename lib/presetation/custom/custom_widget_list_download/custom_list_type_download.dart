@@ -33,11 +33,15 @@ class CustomListTypeDownload extends StatelessWidget {
               )
             ],
           ),
-          Text(
-            typesize,
-            textAlign: TextAlign.center,
-            style: const TextStyle(
-                fontWeight: FontWeight.bold, color: Colors.grey),
+          Flexible(
+            child: Text(
+              typesize,
+             
+              style: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: Colors.grey,
+                  fontSize: 14),
+            ),
           ),
           Text(
             size,

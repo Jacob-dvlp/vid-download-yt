@@ -7,14 +7,13 @@ import '../../src/providers/interface_provider_get_video_yt/interface_provider_g
 
 class SheachedVideoController extends GetxController with StateMixin {
   final InterfaceProviderGetVideoYt interfaceProviderGetVideoYt;
-  final InterfaceProviderDownloadYt interfaceProviderDownloadYt;
 
   final TextEditingController searchText = TextEditingController();
   List<Item> model = [];
   bool isLoading = true;
   bool isDownload = true;
   SheachedVideoController(
-      this.interfaceProviderGetVideoYt, this.interfaceProviderDownloadYt);
+      this.interfaceProviderGetVideoYt);
 
   Future getVideoYT() async {
     if (searchText.text.isEmpty) {
@@ -35,24 +34,8 @@ class SheachedVideoController extends GetxController with StateMixin {
     checkVideo(true);
   }
 
-  Future downloadVideo(String url) async {
-    try {
-      checkDownload(false);
-      await interfaceProviderDownloadYt.downloadVideoYt1080p(url: url);
-      checkDownload(true);
-    } catch (e) {
-      debugPrint(e.toString());
-      checkDownload(true);
-    }
-  }
-
   checkVideo(bool value) {
     isLoading = value;
-    update();
-  }
-
-  checkDownload(bool value) {
-    isDownload = value;
     update();
   }
 

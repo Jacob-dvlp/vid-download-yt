@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 
 import '../../src/model/response_you_tube.dart';
 import '../sheached_video/sheached_video_controller.dart';
-import '../video_you_tube/video_you_tube_page.dart';
+import '../video_you_tube/video_yt/video_yt_page.dart';
 
 class HomePage extends GetView<SheachedVideoController> {
   const HomePage({Key? key}) : super(key: key);
@@ -12,7 +12,9 @@ class HomePage extends GetView<SheachedVideoController> {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<SheachedVideoController>(
-      init: SheachedVideoController(Get.find(), Get.find()),
+      init: SheachedVideoController(
+        Get.find(),
+      ),
       builder: (controller) {
         return Scaffold(
           appBar: AppBar(
@@ -105,17 +107,11 @@ class HomePage extends GetView<SheachedVideoController> {
                           padding: const EdgeInsets.only(top: 10, right: 8),
                           child: GestureDetector(
                             onTap: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => VideoYouTubePage(
-                                      id: item.id.videoId,
-                                      descption: item.snippet.title,
-                                      channelName: item.snippet.channelTitle,
-                                      thumbnails: item.snippet.thumbnails
-                                          .thumbnailsDefault.url,
-                                    ),
-                                  ));
+                              Get.toNamed(VideoYtPage.routNamed, arguments: [
+                                item.id.videoId,
+                                item.snippet.title,
+                                item.snippet.thumbnails.thumbnailsDefault.url
+                              ]);
                             },
                             child: const CircleAvatar(
                               backgroundColor: Colors.red,

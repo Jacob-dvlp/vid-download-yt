@@ -1,10 +1,10 @@
 import 'dart:convert';
 
-ResponseDownloadYt responseDownloadYtFromJson(String str) =>
-    ResponseDownloadYt.fromJson(json.decode(str));
+ResponseDownloadYt4 responseDownloadYtFromJson4(String str) =>
+    ResponseDownloadYt4.fromJson(json.decode(str));
 
-class ResponseDownloadYt {
-  ResponseDownloadYt({
+class ResponseDownloadYt4 {
+  ResponseDownloadYt4({
     this.creator,
     this.pilihanType,
     this.id,
@@ -22,20 +22,8 @@ class ResponseDownloadYt {
   Mp4? mp4;
   Audio? audio;
 
-  ResponseDownloadYt copyWith({
-    String? pilihanType,
-    String? thumbnail,
-    Mp4? mp4,
-    Audio? audio,
-  }) =>
-      ResponseDownloadYt(
-        pilihanType: pilihanType ?? this.pilihanType,
-        mp4: mp4 ?? this.mp4,
-        audio: audio ?? this.audio,
-      );
-
-  factory ResponseDownloadYt.fromJson(Map<String, dynamic> json) =>
-      ResponseDownloadYt(
+  factory ResponseDownloadYt4.fromJson(Map<String, dynamic> json) =>
+      ResponseDownloadYt4(
         creator: json["creator"],
         pilihanType: json["pilihan_type"],
         id: json["id"],

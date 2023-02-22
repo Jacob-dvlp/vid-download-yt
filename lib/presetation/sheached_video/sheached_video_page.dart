@@ -15,7 +15,7 @@ class SheachedVideoPage extends GetView<SheachedVideoController> {
         backgroundColor: Colors.red,
       ),
       body: GetBuilder<SheachedVideoController>(
-        init: SheachedVideoController(Get.find(), Get.find()),
+        init: SheachedVideoController(Get.find()),
         builder: (controller) {
           return Column(
             mainAxisAlignment: MainAxisAlignment.center,
