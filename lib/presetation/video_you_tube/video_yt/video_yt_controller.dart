@@ -183,12 +183,11 @@ class VideoYtController extends GetxController {
         .downloadVideoYt1080p(url: url)
         .whenComplete(() async {
           checkDownload(true);
-          downloadVideoYt760P =
-              await interfaceProviderDownloadYt.downloadVideoYt720p(url: url);
-          checkDownload(true);
           EasyLoading.showSuccess(
             "O seu download está disponivel",
           );
+          downloadVideoYt760P =
+              await interfaceProviderDownloadYt.downloadVideoYt720p(url: url);
         })
         .whenComplete(() async => downloadVideoYt420P =
             await interfaceProviderDownloadYt

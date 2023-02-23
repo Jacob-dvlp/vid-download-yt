@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../facebook/facebook_page.dart';
 import 'sheached_video_controller.dart';
 
 class SheachedVideoPage extends GetView<SheachedVideoController> {
@@ -64,7 +65,7 @@ class SheachedVideoPage extends GetView<SheachedVideoController> {
                               backgroundColor: Colors.red,
                             ),
                             onPressed: () => controller.getVideoYT(),
-                            child: const Text("Buscar o Vídeo")),
+                            child: const Text("Buscar o Vídeo no You tube")),
                       )
                     : const Center(
                         child: CircularProgressIndicator(
@@ -82,7 +83,7 @@ class SheachedVideoPage extends GetView<SheachedVideoController> {
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.red,
                       ),
-                      onPressed: () => controller.getVideoYT(),
+                      onPressed: () => Get.toNamed(FacebookPage.routNamed),
                       child: const Text("Baixar video do facebook")),
                 )
               ],

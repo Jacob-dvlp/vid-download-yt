@@ -1,5 +1,7 @@
 import 'package:get/get.dart';
 
+import '../presetation/facebook/facebook_bindings.dart';
+import '../presetation/facebook/facebook_page.dart';
 import '../presetation/home/home_bindings.dart';
 import '../presetation/home/home_page.dart';
 import '../presetation/sheached_video/sheached_video_bindings.dart';
@@ -21,5 +23,9 @@ class AppRoutes {
         name: VideoYtPage.routNamed,
         page: () => const VideoYtPage(),
         binding: VideoYtBindings()),
+    GetPage(
+        name: FacebookPage.routNamed,
+        page: () => const FacebookPage(),
+        binding: FacebookBindings()),
   ];
 }
