@@ -19,7 +19,7 @@ class RepositoryDownloadYt implements InterfaceDownloadYt {
     final response = await http
         .get(Uri.parse(
             "${AppConstant.baseUrlDownload}+https://www.youtube.com/watch?v=$url&type=1080"))
-        .timeout(const Duration(seconds: 20));
+        .timeout(const Duration(seconds: 30));
     log(response.body, name: "1080");
     if (response.statusCode == 200) {
       responseDownloadYt1080p = responseDownloadYtFromJson(response.body);

@@ -11,8 +11,9 @@ class RespostiroyGetVideoYt implements InterfaceGetVideoYt {
 
   @override
   Future<List<Item>> searchVideoYt(String value) async {
+    String fields = "*";
     final response = await http.get(
-      Uri.parse("$url+$value&maxResults=30"),
+      Uri.parse("$url+$value&maxResults=80&fields=$fields"),
     );
     final convert = response.body;
     ResponseYouTube model = responseYouTubeFromJson(convert);

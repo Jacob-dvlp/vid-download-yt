@@ -20,6 +20,6 @@ class AppRoutes {
     GetPage(
         name: VideoYtPage.routNamed,
         page: () => const VideoYtPage(),
-        binding: VideoYtBindings())
+        binding: VideoYtBindings()),
   ];
 }

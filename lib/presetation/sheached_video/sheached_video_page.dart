@@ -10,58 +10,83 @@ class SheachedVideoPage extends GetView<SheachedVideoController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Buscador de Vídeos'),
         centerTitle: true,
         backgroundColor: Colors.red,
+        elevation: 0,
       ),
       body: GetBuilder<SheachedVideoController>(
         init: SheachedVideoController(Get.find()),
         builder: (controller) {
-          return Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                padding: const EdgeInsets.all(12),
-                margin: const EdgeInsets.only(),
-                child: TextFormField(
-                  controller: controller.searchText,
-                  maxLength: 20,
-                  decoration: const InputDecoration(
-                    labelText: 'Titulo do vídeo',
-                    labelStyle: TextStyle(
-                      color: Colors.blueGrey,
-                    ),
-                    enabledBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(
-                        color: Colors.blueGrey,
-                      ),
-                    ),
-                    helperText: "Qual vídeo pretendes baixar",
-                  ),
-                  onChanged: (value) {},
-                ),
-              ),
-              const SizedBox(
-                height: 15,
-              ),
-              controller.isLoading
-                  ? SizedBox(
-                      width: 350,
-                      height: 50,
-                      child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.red,
-                          ),
-                          onPressed: () => controller.getVideoYT(),
-                          child: const Text("Buscar o Vídeo")),
-                    )
-                  : const Center(
-                      child: CircularProgressIndicator(
-                        backgroundColor: Colors.red,
+          return SingleChildScrollView(
+            child: Column(
+              children: [
+                Padding(
+                    padding: const EdgeInsets.all(0.0),
+                    child: Container(
+                      height: 450,
+                      width: Get.width,
+                      color: const Color(0xFFF44336),
+                      child: Image.asset(
+                        "assets/bg.png",
                         color: Colors.white,
                       ),
+                    )),
+                Container(
+                  padding: const EdgeInsets.all(12),
+                  margin: const EdgeInsets.only(),
+                  child: TextFormField(
+                    controller: controller.searchText,
+                    maxLength: 50,
+                    decoration: const InputDecoration(
+                      labelText: 'Titulo do vídeo',
+                      labelStyle: TextStyle(
+                        color: Colors.blueGrey,
+                      ),
+                      enabledBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Colors.blueGrey,
+                        ),
+                      ),
+                      helperText: "Qual vídeo pretendes baixar",
                     ),
-            ],
+                    onChanged: (value) {},
+                  ),
+                ),
+                const SizedBox(
+                  height: 15,
+                ),
+                controller.isLoading
+                    ? SizedBox(
+                        width: 350,
+                        height: 50,
+                        child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.red,
+                            ),
+                            onPressed: () => controller.getVideoYT(),
+                            child: const Text("Buscar o Vídeo")),
+                      )
+                    : const Center(
+                        child: CircularProgressIndicator(
+                          backgroundColor: Colors.red,
+                          color: Colors.white,
+                        ),
+                      ),
+                const SizedBox(
+                  height: 15,
+                ),
+                SizedBox(
+                  width: 320,
+                  height: 50,
+                  child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.red,
+                      ),
+                      onPressed: () => controller.getVideoYT(),
+                      child: const Text("Baixar video do facebook")),
+                )
+              ],
+            ),
           );
         },
       ),
