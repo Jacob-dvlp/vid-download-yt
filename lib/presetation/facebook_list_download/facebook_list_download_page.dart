@@ -85,7 +85,6 @@ class FacebookListDownloadPage extends GetView<FacebookController> {
                             controller.arquivo =
                                 controller.responseFacebook!.hasil.hd;
                             controller.format = ".mp4";
-
                             controller.isSelected();
                           },
                           child: CustomListTypeDownload(
@@ -94,7 +93,6 @@ class FacebookListDownloadPage extends GetView<FacebookController> {
                               size: "N/P",
                               isSelected: controller.isSelectedItem),
                         ),
-
                   const SizedBox(
                     height: 8,
                   ),
